@@ -5,17 +5,25 @@
  */
 package App;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author evan
  */
 public class Makanan extends javax.swing.JFrame {
-
+    ArrayList<Makan> makananArrayList;
     /**
      * Creates new form Makanan
      */
     public Makanan() {
         initComponents();
+    }
+    public Makanan(ArrayList<Makan> makanan) {
+        initComponents();
+        this.makananArrayList = makanan;
+        
     }
 
     /**
@@ -122,6 +130,27 @@ public class Makanan extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String nama = jTextField1.getText();
+        String hargaS =jTextField2.getText();
+        long harga;
+        if(nama.isEmpty()||hargaS.isEmpty()){
+             JOptionPane.showMessageDialog(this,
+            "Nama atau Harga tidak boleh kosong",
+            "Invalid Input",
+            JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try{
+            harga  = Long.parseLong(hargaS) ;
+        }
+        catch(RuntimeException r){
+            JOptionPane.showMessageDialog(this,
+            "Harga harus berisi angka",
+            "Invalid Input",
+            JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        makananArrayList.add(new Makan(nama,harga));
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

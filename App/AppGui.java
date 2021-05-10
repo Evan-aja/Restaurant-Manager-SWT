@@ -17,12 +17,20 @@ import java.util.ArrayList;
  * @author evan
  */
 public class AppGui extends javax.swing.JFrame {
+    
+//--------variable buatan sendiri----------
+    ArrayList<Makan> makananArrayList;
+    ArrayList<Minum> minumanArrayList;
+//--------variable buatan sendiri----------
+
 
     /**
      * Creates new form AppGui
      */
     public AppGui() {
         initComponents();
+        makananArrayList = new ArrayList<Makan>();
+        minumanArrayList = new ArrayList<Minum>();
     }
 
     /**
@@ -121,13 +129,13 @@ public class AppGui extends javax.swing.JFrame {
             if(result == JOptionPane.YES_OPTION){
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        new Makanan().setVisible(true);
+                        new Makanan(makananArrayList).setVisible(true);
                     }
                 });
             }else if (result == JOptionPane.NO_OPTION){
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        new Minuman().setVisible(true);
+                        new Minuman(minumanArrayList).setVisible(true);
                     }
                 });
             }
@@ -145,12 +153,24 @@ public class AppGui extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        JFrame exit = new JFrame("Exit");
-        if (JOptionPane.showConfirmDialog( exit,"Apakah Anda Yakin?","Exit",
-            JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
-            System.exit(0);
-        else return;
-        exit.setVisible(true);
+        // for(Makan makanan : makananArrayList){
+        //     System.out.println("makanan : "+makanan.getNama());
+        //     System.out.println("harga : "+makanan.getHarga());
+        //     System.out.println();
+
+        // }
+        // for(Minum minuman : minumanArrayList){
+        //     System.out.println("minuman : "+minuman.getNama());
+        //     System.out.println("harga : "+minuman.getHarga());
+        //     System.out.println();
+
+        // }
+       JFrame exit = new JFrame("Exit");
+       if (JOptionPane.showConfirmDialog( exit,"Apakah Anda Yakin?","Exit",
+           JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+           System.exit(0);
+       else return;
+       exit.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
                                       
 
