@@ -130,7 +130,7 @@ public class Minuman extends javax.swing.JFrame {
        String nama = jTextField1.getText();
         String hargaS =jTextField2.getText();
         long harga;
-        if(nama==""||hargaS==""){
+        if(nama.isEmpty()||hargaS.isEmpty()){
              JOptionPane.showMessageDialog(this,
             "Nama atau Harga tidak boleh kosong",
             "Invalid Input",
