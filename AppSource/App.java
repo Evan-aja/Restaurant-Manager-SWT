@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class App {
     Scanner input = new Scanner(System.in);
-    ArrayList<Makanan> makananArrayList;
+    ArrayList<Makan> makananArrayList;
     ArrayList<Minum> minumanArrayList;
 
     App(){
-        makananArrayList = new ArrayList<Makanan>();
+        makananArrayList = new ArrayList<Makan>();
         minumanArrayList = new ArrayList<Minum>();
     }
 
@@ -30,6 +30,12 @@ public class App {
                 System.out.print("\nHarga : ");
                 harga = input.nextLong();
                 input.nextLine();
+                for (int i = 0; i < makananArrayList.size(); i++) {
+                    if(nama.equalsIgnoreCase(makananArrayList.get(i).getNama())){
+                        System.out.println("Makanan yang anda input sudah tersedia di dalam list");
+                        return;
+                    }
+                }
                 tambahMakanan(nama, harga);
                 if (makananArrayList.size() - counter == 1) {
                     System.out.println("Penambahan berhasil!");
@@ -40,6 +46,12 @@ public class App {
                 System.out.print("\nHarga : ");
                 harga = input.nextLong();
                 input.nextLine();
+                for (int i = 0; i < minumanArrayList.size(); i++) {
+                    if(nama.equalsIgnoreCase(minumanArrayList.get(i).getNama())){
+                        System.out.println("Minuman yang anda input sudah tersedia di dalam list");
+                        return;
+                    }
+                }
                 tambahMinuman(nama, harga);
                 if (minumanArrayList.size() - counter1 == 1) {
                     System.out.println("Penambahan berhasil!");
@@ -51,7 +63,7 @@ public class App {
     }
 
     void tambahMakanan(String nama,long harga){
-        makananArrayList.add(new Makanan(nama,harga));
+        makananArrayList.add(new Makan(nama,harga));
     }
 
     void tambahMinuman(String nama,long harga){
@@ -116,6 +128,7 @@ public class App {
 abstract class Menu{
     private String nama;
     private long harga;
+    private String jenisMenu;
 
     public String getNama() {
         return nama;
@@ -132,18 +145,30 @@ abstract class Menu{
     public void setHarga(long harga) {
         this.harga = harga;
     }
+
+    public String getJenisMenu() {
+        return jenisMenu;
+    }
+
+    public void setJenisMenu(String jenisMenu) {
+        this.jenisMenu = jenisMenu;
+    }
 }
 
-class Makanan extends Menu{
-    Makanan(String nama,long harga){
+class Makan extends Menu{
+    Makan(String nama, long harga){
         setNama(nama);
         setHarga(harga);
+        setJenisMenu("Makanan");
     }
+
 }
 
 class Minum extends Menu{
-    Minum(String nama,long harga){
+    Minum(String nama, long harga){
         setNama(nama);
         setHarga(harga);
+        setJenisMenu("Minuman");
     }
 }
+

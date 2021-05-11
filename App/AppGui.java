@@ -9,6 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -17,8 +21,8 @@ import java.util.ArrayList;
  * @author evan
  */
 public class AppGui extends javax.swing.JFrame {
-    
-//--------variable buatan sendiri----------
+
+    //--------variable buatan sendiri----------
     ArrayList<Makan> makananArrayList;
     ArrayList<Minum> minumanArrayList;
 //--------variable buatan sendiri----------
@@ -78,31 +82,31 @@ public class AppGui extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(115, 115, 115))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(71, 71, 71))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(115, 115, 115)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(115, 115, 115))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(49, 49, 49)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(82, 82, 82))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(49, 49, 49)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(82, 82, 82))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -115,31 +119,31 @@ public class AppGui extends javax.swing.JFrame {
         JFrame confirm=new JFrame();
         JPanel isi=new JPanel();
         JLabel label=new JLabel();
-        String[] pilihan={"Makanan","Minuman"}; 
+        String[] pilihan={"Makanan","Minuman"};
         int result = JOptionPane.showOptionDialog(
                 confirm,
-                "Apa yang ingin anda tambahkan?", 
-                "Penambahan Menu",            
+                "Apa yang ingin anda tambahkan?",
+                "Penambahan Menu",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,     //no custom icon
                 pilihan,  //button titles
                 pilihan[0] //default button
-            );
-            if(result == JOptionPane.YES_OPTION){
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        new Makanan().setVisible(true);
-                    }
-                });
-            }else if (result == JOptionPane.NO_OPTION){
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        new Minuman().setVisible(true);
-                    }
-                });
-            }
-        
+        );
+        if(result == JOptionPane.YES_OPTION){
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new Makanan().setVisible(true);
+                }
+            });
+        }else if (result == JOptionPane.NO_OPTION){
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new Minuman().setVisible(true);
+                }
+            });
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -147,7 +151,7 @@ public class AppGui extends javax.swing.JFrame {
         ModeKasir.addArray(maem,emik);
         ModeKasir ehh=new ModeKasir();
         ehh.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -164,25 +168,47 @@ public class AppGui extends javax.swing.JFrame {
         //     System.out.println();
 
         // }
-       JFrame exit = new JFrame("Exit");
-       if (JOptionPane.showConfirmDialog( exit,"Apakah Anda Yakin?","Exit",
-           JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
-           System.exit(0);
-       else return;
-       exit.setVisible(true);
+        JFrame exit = new JFrame("Exit");
+        if (JOptionPane.showConfirmDialog( exit,"Apakah Anda Yakin?","Exit",
+                JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+            System.exit(0);
+        else return;
+        exit.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-                                      
 
-    
+
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
+
+        //Input menu makanan yang sudah teredia
+        FileReader file = new FileReader("makanan.txt");
+        Scanner input = new Scanner(file);
+        while(input.hasNext()){
+            String x = input.nextLine();
+            String[] array = x.split("-");
+            App.makananArrayList.add(new Makan(array[0],Long.parseLong(array[1])));
+        }
+        file.close();
+
+        //Input menu minuman yang sudah teredia
+        file = new FileReader("minuman.txt");
+        input = new Scanner(file);
+        while(input.hasNext()){
+            String x = input.nextLine();
+            String[] array = x.split("-");
+            App.minumanArrayList.add(new Minum(array[0],Long.parseLong(array[1])));
+        }
+        file.close();
+
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -209,8 +235,10 @@ public class AppGui extends javax.swing.JFrame {
                 new AppGui().setVisible(true);
             }
         });
+
+
     }
-    
+
     public static ArrayList<String> maem=new ArrayList<>();
     public static ArrayList<String> emik=new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
