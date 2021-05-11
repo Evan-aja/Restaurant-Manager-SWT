@@ -230,6 +230,55 @@ class App {
         minumanArrayList = new ArrayList<Minum>();
     }
 
+    void panelTambahMenu(){
+        int counter = makananArrayList.size();
+        int counter1 = minumanArrayList.size();
+        while(true) {
+            String nama;
+            long harga;
+            System.out.println("Apa yang ingin anda tambahkan? (pilih angka)");
+            System.out.println("1. Makanan");
+            System.out.println("2. Minuman");
+            System.out.println("3. Exit");
+            String jenis = input.nextLine();
+            if (jenis.equals("1")) {
+                System.out.print("Nama makanan : ");
+                nama = input.nextLine();
+                System.out.print("\nHarga : ");
+                harga = input.nextLong();
+                input.nextLine();
+                for (int i = 0; i < makananArrayList.size(); i++) {
+                    if(nama.equalsIgnoreCase(makananArrayList.get(i).getNama())){
+                        System.out.println("Makanan yang anda input sudah tersedia di dalam list");
+                        return;
+                    }
+                }
+                tambahMakanan(nama, harga);
+                if (makananArrayList.size() - counter == 1) {
+                    System.out.println("Penambahan berhasil!");
+                }
+            } else if (jenis.equals("2")) {
+                System.out.print("Nama minuman : ");
+                nama = input.nextLine();
+                System.out.print("\nHarga : ");
+                harga = input.nextLong();
+                input.nextLine();
+                for (int i = 0; i < minumanArrayList.size(); i++) {
+                    if(nama.equalsIgnoreCase(minumanArrayList.get(i).getNama())){
+                        System.out.println("Minuman yang anda input sudah tersedia di dalam list");
+                        return;
+                    }
+                }
+                tambahMinuman(nama, harga);
+                if (minumanArrayList.size() - counter1 == 1) {
+                    System.out.println("Penambahan berhasil!");
+                }
+            }else if(jenis.equals("3")){
+                return;
+            }
+        }
+    }
+
     void tambahMakanan(String nama,long harga){
         makananArrayList.add(new Makan(nama,harga));
     }
@@ -296,6 +345,7 @@ class App {
 abstract class Menu{
     private String nama;
     private long harga;
+    private String jenisMenu;
 
     public String getNama() {
         return nama;
@@ -312,19 +362,29 @@ abstract class Menu{
     public void setHarga(long harga) {
         this.harga = harga;
     }
+
+    public String getJenisMenu() {
+        return jenisMenu;
+    }
+
+    public void setJenisMenu(String jenisMenu) {
+        this.jenisMenu = jenisMenu;
+    }
 }
 
-class Makan extends Menu{
-    Makan(String nama, long harga) {
+class Makan extends Menu {
+    Makan(String nama, long harga){
         setNama(nama);
         setHarga(harga);
+        setJenisMenu("Makanan");
     }
 
 }
 
-class Minum extends Menu{
-    Minum(String nama,long harga){
+class Minum extends Menu {
+    Minum(String nama, long harga){
         setNama(nama);
         setHarga(harga);
+        setJenisMenu("Minuman");
     }
 }
