@@ -3,14 +3,14 @@ package AppSource;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class App {
+public class App2 {
     Scanner input = new Scanner(System.in);
-    ArrayList<Makanan> makananArrayList;
-    ArrayList<Minuman> minumanArrayList;
+    ArrayList<Makan> makananArrayList;
+    ArrayList<Minum> minumanArrayList;
 
-    App(){
-        makananArrayList = new ArrayList<Makanan>();
-        minumanArrayList = new ArrayList<Minuman>();
+    App2(){
+        makananArrayList = new ArrayList<Makan>();
+        minumanArrayList = new ArrayList<Minum>();
     }
 
     void panelTambahMenu(){
@@ -63,11 +63,11 @@ public class App {
     }
 
     void tambahMakanan(String nama,long harga){
-        makananArrayList.add(new Makanan(nama,harga));
+        makananArrayList.add(new Makan(nama,harga));
     }
 
     void tambahMinuman(String nama,long harga){
-        minumanArrayList.add(new Minuman(nama,harga));
+        minumanArrayList.add(new Minum(nama,harga));
     }
 
     void panelModeKasir(){
@@ -155,8 +155,8 @@ abstract class Menu{
     }
 }
 
-class Makanan extends Menu{
-    Makanan(String nama,long harga){
+class Makan extends Menu{
+    Makan(String nama, long harga){
         setNama(nama);
         setHarga(harga);
         setJenisMenu("Makanan");
@@ -164,10 +164,11 @@ class Makanan extends Menu{
 
 }
 
-class Minuman extends Menu{
-    Minuman(String nama,long harga){
+class Minum extends Menu{
+    Minum(String nama, long harga){
         setNama(nama);
         setHarga(harga);
         setJenisMenu("Minuman");
     }
 }
+
