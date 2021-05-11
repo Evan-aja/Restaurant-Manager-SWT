@@ -3,12 +3,12 @@ package AppSource;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class App2 {
+public class App {
     Scanner input = new Scanner(System.in);
     ArrayList<Makan> makananArrayList;
     ArrayList<Minum> minumanArrayList;
 
-    App2(){
+    App(){
         makananArrayList = new ArrayList<Makan>();
         minumanArrayList = new ArrayList<Minum>();
     }
