@@ -5,6 +5,8 @@
  */
 package App;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author evan
@@ -16,6 +18,12 @@ public class ModeKasir extends javax.swing.JFrame {
      */
     public ModeKasir() {
         initComponents();
+    }
+    public static void addArray(ArrayList<String> maem,ArrayList<String> emik){
+        ModeKasir.maemString=maem.toArray(new String[maem.size()]);
+        for(String i : maemString)System.out.println(i);
+        ModeKasir.emikString=emik.toArray(new String[emik.size()]);
+        for(String i : emikString)System.out.println(i);
     }
 
     /**
@@ -39,10 +47,11 @@ public class ModeKasir extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings=maemString;
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList1.setCellRenderer(new CheckboxListCellRenderer());
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setText("Menu Makanan");
@@ -50,11 +59,14 @@ public class ModeKasir extends javax.swing.JFrame {
         jLabel1.setMinimumSize(new java.awt.Dimension(40, 14));
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings=emikString;
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList2.setCellRenderer(new CheckboxListCellRenderer());
         jScrollPane2.setViewportView(jList2);
+        jList2.getAccessibleContext().setAccessibleName("");
+        jList2.getAccessibleContext().setAccessibleDescription("");
 
         jLabel2.setText("Menu Minuman");
         jLabel2.setMaximumSize(new java.awt.Dimension(40, 14));
@@ -68,7 +80,7 @@ public class ModeKasir extends javax.swing.JFrame {
         });
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Pilihan Menu (Mohon pilih 1 per 1)");
+        jLabel3.setText("Pilihan Menu (tekan Ctrl untuk memilih banyak menu sekaligus)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,7 +98,7 @@ public class ModeKasir extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(37, 37, 37))
             .addGroup(layout.createSequentialGroup()
                 .addGap(104, 104, 104)
@@ -108,7 +120,7 @@ public class ModeKasir extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                         .addGap(27, 27, 27))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
@@ -123,9 +135,18 @@ public class ModeKasir extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        int a[]=jList1.getSelectedIndices();
+        int b[]=jList2.getSelectedIndices();
+        getIndices(a);
+        getIndices(b);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    public void getIndices(int[] a){
+        for(int i=0;i<a.length;i++) {
+            System.out.println(a[i]);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -152,7 +173,7 @@ public class ModeKasir extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ModeKasir.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -160,15 +181,34 @@ public class ModeKasir extends javax.swing.JFrame {
             }
         });
     }
-
+    public static String[] maemString;
+    public static String[] emikString;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
+    private static javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+}
+class CheckboxListCellRenderer extends javax.swing.JCheckBox implements javax.swing.ListCellRenderer {
+
+    @Override
+    public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, 
+            boolean isSelected, boolean cellHasFocus) {
+
+        setComponentOrientation(list.getComponentOrientation());
+        setFont(list.getFont());
+        setBackground(list.getBackground());
+        setForeground(list.getForeground());
+        setSelected(isSelected);
+        setEnabled(list.isEnabled());
+
+        setText(value == null ? "" : value.toString());  
+
+        return this;
+    }
 }

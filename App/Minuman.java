@@ -20,11 +20,6 @@ public class Minuman extends javax.swing.JFrame {
     public Minuman() {
         initComponents();
     }
-    public Minuman(ArrayList<Minum> minuman) {
-        initComponents();
-        this.minumanArrayList=minuman;
-        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -147,7 +142,7 @@ public class Minuman extends javax.swing.JFrame {
             JOptionPane.WARNING_MESSAGE);
             return;
         }
-        minumanArrayList.add(new Minum(nama,harga));
+        App.tambahMinuman(nama,harga);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -20,11 +20,6 @@ public class Makanan extends javax.swing.JFrame {
     public Makanan() {
         initComponents();
     }
-    public Makanan(ArrayList<Makan> makanan) {
-        initComponents();
-        this.makananArrayList = makanan;
-        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,7 +145,7 @@ public class Makanan extends javax.swing.JFrame {
             JOptionPane.WARNING_MESSAGE);
             return;
         }
-        makananArrayList.add(new Makan(nama,harga));
+        App.tambahMakanan(nama,harga);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

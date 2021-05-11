@@ -129,13 +129,13 @@ public class AppGui extends javax.swing.JFrame {
             if(result == JOptionPane.YES_OPTION){
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        new Makanan(makananArrayList).setVisible(true);
+                        new Makanan().setVisible(true);
                     }
                 });
             }else if (result == JOptionPane.NO_OPTION){
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
-                        new Minuman(minumanArrayList).setVisible(true);
+                        new Minuman().setVisible(true);
                     }
                 });
             }
@@ -144,11 +144,10 @@ public class AppGui extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModeKasir().setVisible(true);
-            }
-        });
+        ModeKasir.addArray(maem,emik);
+        ModeKasir ehh=new ModeKasir();
+        ehh.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -202,8 +201,8 @@ public class AppGui extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
-//        App menu=new App();
+        App.tambahMakanan("Dhaharan", 1230);
+        App.tambahMinuman("Unjukan", 3450);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -212,6 +211,8 @@ public class AppGui extends javax.swing.JFrame {
         });
     }
     
+    public static ArrayList<String> maem=new ArrayList<>();
+    public static ArrayList<String> emik=new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -222,20 +223,34 @@ public class AppGui extends javax.swing.JFrame {
 
 class App {
     Scanner input = new Scanner(System.in);
-    ArrayList<Makan> makananArrayList;
-    ArrayList<Minum> minumanArrayList;
+    static ArrayList<Makan> makananArrayList = new ArrayList<Makan>();
+    static ArrayList<Minum> minumanArrayList = new ArrayList<Minum>();
 
     App(){
         makananArrayList = new ArrayList<Makan>();
         minumanArrayList = new ArrayList<Minum>();
     }
 
-    void tambahMakanan(String nama,long harga){
+    static void tambahMakanan(String nama,long harga){
         makananArrayList.add(new Makan(nama,harga));
+        if(AppGui.maem.size()<makananArrayList.size()){
+            AppGui.maem.add(App.makananToString(makananArrayList.size()-1));
+        }
     }
 
-    void tambahMinuman(String nama,long harga){
+    static void tambahMinuman(String nama,long harga){
         minumanArrayList.add(new Minum(nama,harga));
+        if(AppGui.emik.size()<minumanArrayList.size()){
+            AppGui.emik.add(App.minumanToString(minumanArrayList.size()-1));
+        }
+    }
+    static String makananToString(int index){
+        String a=makananArrayList.get(index).getNama()+" "+makananArrayList.get(index).getHarga();
+        return a;
+    }
+    static String minumanToString(int index){
+        String a=minumanArrayList.get(index).getNama()+" "+minumanArrayList.get(index).getHarga();
+        return a;
     }
 
     void panelModeKasir(){
