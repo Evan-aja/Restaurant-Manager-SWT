@@ -5,7 +5,14 @@
  */
 package App;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -145,6 +152,17 @@ public class Makanan extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        if(App.menuIsExist("makanan",nama)){
+            JOptionPane.showMessageDialog(this,
+                    "Makanan sudah tersedia !",
+                    "Menu Exist",
+                    JOptionPane.WARNING_MESSAGE);
+                return;
+        }
+        
+        App.saveMenu("makanan",nama,hargaS);
+        // harusnya setelah di save load dari file lagi, biar data konsisten, jadi ngga usah dikasih App.tambahMakanan() -adon
         App.tambahMakanan(nama,harga);
 
         this.dispose();
