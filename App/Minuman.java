@@ -142,6 +142,17 @@ public class Minuman extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        if(App.menuIsExist("minuman",nama)){
+            JOptionPane.showMessageDialog(this,
+                    "Minuman sudah tersedia !",
+                    "Menu Exist",
+                    JOptionPane.WARNING_MESSAGE);
+                return;
+        }
+        
+        App.saveMenu("minuman",nama,hargaS);
+        // harusnya setelah di save load dari file lagi, biar data konsisten, jadi ngga usah dikasih App.tambahMakanan() -adon
         App.tambahMinuman(nama,harga);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

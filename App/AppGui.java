@@ -12,9 +12,12 @@ import javax.swing.JPanel;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -333,7 +336,50 @@ class App {
         System.out.println("Terima kasih telah mengunjungi");
     }
 
-
+    static boolean menuIsExist(String jenis,String nama){
+        jenis=jenis.toLowerCase();
+        File fileMenu = new File(jenis+".txt");
+        try {
+            fileMenu.createNewFile(); // kalau belum ada file makanan.txt / minuman.txt
+        } catch (IOException ex) {
+            System.out.println("error when creating new file in menuIsExist method");
+        }
+        Scanner i=null;
+        try{
+         i = new Scanner(fileMenu);
+         
+        }
+        catch(FileNotFoundException e){
+            System.out.println("File "+jenis+".txt tidak ditemukan");
+        }
+        while (i.hasNextLine()){
+            String data = i.nextLine();
+            String[] splitted = data.split("-");
+            if(nama.equals(splitted[0])){
+                return true;
+            }
+        }
+        return false;
+    }
+   static void saveMenu(String jenis, String nama, String hargaS){
+       jenis=jenis.toLowerCase();
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(jenis+".txt",true);
+        } catch (IOException ex) {
+            System.out.println("error saat penginsertan FileWriter di "+jenis+".java");
+        }
+        try {
+            fw.write("\n"+nama+"-"+hargaS);
+        } catch (IOException ex) {
+            System.out.println("error saat write FileWriter di "+jenis+".java");
+        }
+        try {
+            fw.close();
+        } catch (IOException ex) {
+            System.out.println("error saat close FileWriter di "+jenis+".java");
+        }
+   }
 }
 
 abstract class Menu{
