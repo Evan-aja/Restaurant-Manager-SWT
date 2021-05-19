@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.System.Logger;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -50,6 +51,7 @@ public class ModeKasir extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,6 +101,13 @@ public class ModeKasir extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Kurangi");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,7 +132,9 @@ public class ModeKasir extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -145,20 +156,20 @@ public class ModeKasir extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -166,6 +177,7 @@ public class ModeKasir extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
+                    .addComponent(jButton4)
                     .addComponent(jButton3))
                 .addContainerGap())
         );
@@ -176,39 +188,133 @@ public class ModeKasir extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int[] Tmakan=jTable1.getSelectedRows();
-        try{
-            int Jmakan=Integer.parseInt(jTextField1.getText());
-            data.pesananMaem.add(Tmakan[0]);
-            data.jumlahMaem.add(Jmakan);
-            System.out.println(data.pesananMaem.toString()+" "+data.jumlahMaem.toString());
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(this,
-                "Jumlah harus berisi angka",
-                "Invalid Input",
-                JOptionPane.WARNING_MESSAGE);
+//        int[] Tmakan=jTable1.getSelectedRows();
+//        try{
+//            int Jmakan=Integer.parseInt(jTextField1.getText());
+//            data.pesananMaem.add(Tmakan[0]);
+//            data.jumlahMaem.add(Jmakan);
+//            System.out.println(data.pesananMaem.toString()+" "+data.jumlahMaem.toString());
+//        }catch (Exception e){
+//            JOptionPane.showMessageDialog(this,
+//                "Jumlah harus berisi angka",
+//                "Invalid Input",
+//                JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//        int[] Tminum=jTable2.getSelectedRows();
+//        try{
+//            int Jminum=Integer.parseInt(jTextField2.getText());
+//            data.pesananMaem.add(Tminum[0]);
+//            data.jumlahMaem.add(Jminum);
+//            System.out.println(data.pesananEmik.toString()+" "+data.jumlahEmik.toString());
+//        }catch(Exception e){
+//            JOptionPane.showMessageDialog(this,
+//                "Jumlah harus berisi angka",
+//                "Invalid Input",
+//                JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//        JOptionPane.showMessageDialog(this,
+//                "Menu Berhasil Dimasukkan",
+//                "Valid Input",
+//                JOptionPane.WARNING_MESSAGE);
+//        this.dispose();
+//        ModeKasir ehh=new ModeKasir();
+//        ehh.show();
+
+        //my version
+        if(jTable1.getSelectedRowCount()== 1 && jTable2.getSelectedRowCount()== 1){
+            JOptionPane.showMessageDialog(this, "Pilih salah satu tabel, makanan atau minuman", "Warning", JOptionPane.WARNING_MESSAGE);
+            jTextField1.setText("");
+            jTextField2.setText("");
             return;
         }
-        int[] Tminum=jTable2.getSelectedRows();
-        try{
-            int Jminum=Integer.parseInt(jTextField2.getText());
-            data.pesananMaem.add(Tminum[0]);
-            data.jumlahMaem.add(Jminum);
-            System.out.println(data.pesananEmik.toString()+" "+data.jumlahEmik.toString());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this,
-                "Jumlah harus berisi angka",
-                "Invalid Input",
-                JOptionPane.WARNING_MESSAGE);
+        
+        if(jTable1.getSelectedRowCount()== 0 && jTable2.getSelectedRowCount()== 0){
+            JOptionPane.showMessageDialog(this, "Pilih makanan atau minuman pada tabel", "Warning", JOptionPane.WARNING_MESSAGE);
+            jTextField1.setText("");
+            jTextField2.setText("");
             return;
         }
-        JOptionPane.showMessageDialog(this,
-                "Menu Berhasil Dimasukkan",
-                "Valid Input",
-                JOptionPane.WARNING_MESSAGE);
-        this.dispose();
-        ModeKasir ehh=new ModeKasir();
-        ehh.show();
+        
+        if(jTable1.getSelectedRowCount()> 1 || jTable2.getSelectedRowCount()> 1){
+            JOptionPane.showMessageDialog(this, "Pilih 1 makanan atau 1 minuman pada tabel", "Warning", JOptionPane.WARNING_MESSAGE);
+            jTextField1.setText("");
+            jTextField2.setText("");
+            return;
+        }
+        
+        if(jTable1.getSelectedRowCount()== 1){
+            int before1 = data.pesananMaem.size();
+            int before2 = data.jumlahMaem.size();
+            int selected = jTable1.getSelectedRow();
+            
+            if(jTextField1.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Masukkan jumlah", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            int jumlah = Integer.parseInt(jTextField1.getText());
+            for (int i = 0; i < data.pesananMaem.size(); i++) {
+                if(jTable1.getValueAt(selected, 0).equals(jTable1.getValueAt(data.pesananMaem.get(i), 0))){
+                    int totalAfter = data.jumlahMaem.get(i)+jumlah;
+                    data.jumlahMaem.set(i, totalAfter);
+                    JOptionPane.showMessageDialog(this, "Jumlah "+jTable1.getValueAt(selected, 0)+" berhasil ditambahkan");
+                    System.out.println("Jumlah makanan : "+ data.jumlahMaem.size());
+                    System.out.println("Jumlah "+jTable1.getValueAt(selected, 0)+" : "+data.jumlahMaem.get(i));
+                    jTextField1.setText("");
+                    jTextField2.setText("");
+                    return;
+                }
+            }
+            
+            data.pesananMaem.add(selected);
+            data.jumlahMaem.add(jumlah);
+            
+            if(data.jumlahMaem.size()-before2 == 1 && data.pesananMaem.size()-before1 == 1){
+                JOptionPane.showMessageDialog(this, "Makananan berhasil ditambahkan");
+            }else{
+                JOptionPane.showMessageDialog(this, "Makananan tidak berhasil ditambahkan");
+            }
+            
+            
+        }
+        
+        if(jTable2.getSelectedRowCount()== 1){
+            int before1 = data.pesananEmik.size();
+            int before2 = data.jumlahEmik.size();
+            int selected = jTable2.getSelectedRow();
+            
+            if(jTextField2.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Masukkan jumlah", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            int jumlah = Integer.parseInt(jTextField2.getText());
+            for (int i = 0; i < data.pesananEmik.size(); i++) {
+                if(jTable2.getValueAt(selected, 0).equals(jTable2.getValueAt(data.pesananEmik.get(i), 0))){
+                    int totalAfter = data.jumlahEmik.get(i)+jumlah;
+                    data.jumlahEmik.set(i, totalAfter);
+                    JOptionPane.showMessageDialog(this, "Jumlah "+jTable2.getValueAt(selected, 0)+" berhasil ditambahkan");
+                    System.out.println("Jumlah minuman : "+ data.jumlahEmik.size());
+                    System.out.println("Jumlah "+jTable2.getValueAt(selected, 0)+" : "+data.jumlahEmik.get(i)+"\n");
+                    jTextField1.setText("");
+                    jTextField2.setText("");
+                    return;
+                }
+            }
+            
+            data.pesananEmik.add(selected);
+            data.jumlahEmik.add(jumlah);
+            
+            if(data.jumlahEmik.size()-before2 == 1 && data.pesananEmik.size()-before1 == 1){
+                JOptionPane.showMessageDialog(this, "Minuman berhasil ditambahkan");
+            }else{
+                JOptionPane.showMessageDialog(this, "Minuman tidak berhasil ditambahkan");
+            }
+        }
+        jTextField1.setText("");
+        jTextField2.setText("");
+        System.out.println(showKasirList());
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -218,7 +324,86 @@ public class ModeKasir extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
+        data.setdataStruk(showKasirList());
+        Totalan total = new Totalan();
+        total.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        if(jTable1.getSelectedRowCount()== 1 && jTable2.getSelectedRowCount()== 1){
+            JOptionPane.showMessageDialog(this, "Pilih salah satu tabel, makanan atau minuman", "Warning", JOptionPane.WARNING_MESSAGE);
+            jTextField1.setText("");
+            jTextField2.setText("");
+            return;
+        }
+        
+        if(jTable1.getSelectedRowCount()== 0 && jTable2.getSelectedRowCount()== 0){
+            JOptionPane.showMessageDialog(this, "Pilih makanan atau minuman pada tabel", "Warning", JOptionPane.WARNING_MESSAGE);
+            jTextField1.setText("");
+            jTextField2.setText("");
+            return;
+        }
+        
+        if(jTable1.getSelectedRowCount()> 1 || jTable2.getSelectedRowCount()> 1){
+            JOptionPane.showMessageDialog(this, "Pilih 1 makanan atau 1 minuman pada tabel", "Warning", JOptionPane.WARNING_MESSAGE);
+            jTextField1.setText("");
+            jTextField2.setText("");
+            return;
+        }
+        
+        if(jTable1.getSelectedRowCount()== 1){
+            int selected = jTable1.getSelectedRow();
+            int jumlah = Integer.parseInt(jTextField1.getText());
+            for (int i = 0; i < data.pesananMaem.size(); i++) {
+                if(data.pesananMaem.get(i) == selected){
+                    int afterKurang = data.jumlahMaem.get(i)-jumlah;
+                    if(afterKurang <= 0 ){
+                        data.pesananMaem.remove(i);
+                        data.jumlahMaem.remove(i);
+                    }else{
+                        data.jumlahMaem.set(i, afterKurang);
+                    }   
+                    JOptionPane.showMessageDialog(this, "Makanan berhasil dikurangi");
+                }
+            }
+        }
+        
+        if(jTable2.getSelectedRowCount()== 1){
+            int selected = jTable2.getSelectedRow();
+            int jumlah = Integer.parseInt(jTextField2.getText());
+            for (int i = 0; i < data.pesananEmik.size(); i++) {
+                if(data.pesananEmik.get(i) == selected){
+                    int afterKurang = data.jumlahEmik.get(i)-jumlah;
+                    if(afterKurang <= 0 ){
+                        data.pesananEmik.remove(i);
+                        data.jumlahEmik.remove(i);
+                    }else{
+                        data.jumlahEmik.set(i, afterKurang);
+                    }   
+                    JOptionPane.showMessageDialog(this, "Minuman berhasil dikurangi");
+                }
+            }
+        }
+        jTextField1.setText("");
+        jTextField2.setText("");
+        System.out.println(showKasirList());
+    }//GEN-LAST:event_jButton4ActionPerformed
+    private String showKasirList(){
+        String kalimat = "";
+        System.out.println("Daftar makanan dan minuman yang sudah ditambahkan");
+        for (int i = 0; i < data.jumlahMaem.size(); i++) {
+            kalimat += jTable1.getValueAt(data.pesananMaem.get(i), 0)+"-"+jTable1.getValueAt(data.pesananMaem.get(i), 1)+"-"+data.jumlahMaem.get(i)+"\n";
+        }
+        
+        for (int i = 0; i < data.jumlahEmik.size(); i++) {
+            kalimat += jTable2.getValueAt(data.pesananEmik.get(i), 0)+"-"+jTable2.getValueAt(data.pesananMaem.get(i), 1)+"-"+data.jumlahEmik.get(i)+"\n";
+        }
+        
+        return kalimat;
+    }
     private void refreshMaem(){
         DefaultTableModel yeh=new DefaultTableModel();
         yeh.addColumn("Nama");
@@ -319,6 +504,7 @@ public class ModeKasir extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

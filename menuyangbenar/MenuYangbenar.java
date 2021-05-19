@@ -22,6 +22,16 @@ class data{
     static ArrayList<Integer> jumlahMaem=new ArrayList<>();
     static ArrayList<Integer> pesananEmik=new ArrayList<>();
     static ArrayList<Integer> jumlahEmik=new ArrayList<>();
+    
+    private static String dataStrukk;
+    
+    static void setdataStruk(String dataStruk){
+        dataStrukk = dataStruk;
+    }
+    
+    static String getdataStruk(){
+        return dataStrukk;
+    }
     static void initMaem()throws Exception{
         init("makanan.txt");
     }
