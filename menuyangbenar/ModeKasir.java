@@ -275,8 +275,10 @@ public class ModeKasir extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(this, "Makananan tidak berhasil ditambahkan");
             }
-            
-            
+            System.out.println(showKasirList());
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();
         }
         
         if(jTable2.getSelectedRowCount()== 1){
@@ -310,10 +312,14 @@ public class ModeKasir extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(this, "Minuman tidak berhasil ditambahkan");
             }
+            System.out.println(showKasirList());
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();
         }
-        jTextField1.setText("");
-        jTextField2.setText("");
-        System.out.println(showKasirList());
+//        jTextField1.setText("");
+//        jTextField2.setText("");
+//        System.out.println(showKasirList());
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
