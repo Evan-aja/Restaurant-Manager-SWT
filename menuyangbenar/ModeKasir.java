@@ -188,45 +188,13 @@ public class ModeKasir extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-//        int[] Tmakan=jTable1.getSelectedRows();
-//        try{
-//            int Jmakan=Integer.parseInt(jTextField1.getText());
-//            data.pesananMaem.add(Tmakan[0]);
-//            data.jumlahMaem.add(Jmakan);
-//            System.out.println(data.pesananMaem.toString()+" "+data.jumlahMaem.toString());
-//        }catch (Exception e){
-//            JOptionPane.showMessageDialog(this,
-//                "Jumlah harus berisi angka",
-//                "Invalid Input",
-//                JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//        int[] Tminum=jTable2.getSelectedRows();
-//        try{
-//            int Jminum=Integer.parseInt(jTextField2.getText());
-//            data.pesananMaem.add(Tminum[0]);
-//            data.jumlahMaem.add(Jminum);
-//            System.out.println(data.pesananEmik.toString()+" "+data.jumlahEmik.toString());
-//        }catch(Exception e){
-//            JOptionPane.showMessageDialog(this,
-//                "Jumlah harus berisi angka",
-//                "Invalid Input",
-//                JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
-//        JOptionPane.showMessageDialog(this,
-//                "Menu Berhasil Dimasukkan",
-//                "Valid Input",
-//                JOptionPane.WARNING_MESSAGE);
-//        this.dispose();
-//        ModeKasir ehh=new ModeKasir();
-//        ehh.show();
-
-        //my version
         if(jTable1.getSelectedRowCount()== 1 && jTable2.getSelectedRowCount()== 1){
             JOptionPane.showMessageDialog(this, "Pilih salah satu tabel, makanan atau minuman", "Warning", JOptionPane.WARNING_MESSAGE);
             jTextField1.setText("");
             jTextField2.setText("");
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();
             return;
         }
         
@@ -234,6 +202,9 @@ public class ModeKasir extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Pilih makanan atau minuman pada tabel", "Warning", JOptionPane.WARNING_MESSAGE);
             jTextField1.setText("");
             jTextField2.setText("");
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();
             return;
         }
         
@@ -241,6 +212,9 @@ public class ModeKasir extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Pilih 1 makanan atau 1 minuman pada tabel", "Warning", JOptionPane.WARNING_MESSAGE);
             jTextField1.setText("");
             jTextField2.setText("");
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();
             return;
         }
         
@@ -317,10 +291,6 @@ public class ModeKasir extends javax.swing.JFrame {
             ModeKasir ehh=new ModeKasir();
             ehh.show();
         }
-//        jTextField1.setText("");
-//        jTextField2.setText("");
-//        System.out.println(showKasirList());
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -343,6 +313,9 @@ public class ModeKasir extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Pilih salah satu tabel, makanan atau minuman", "Warning", JOptionPane.WARNING_MESSAGE);
             jTextField1.setText("");
             jTextField2.setText("");
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();
             return;
         }
         
@@ -350,6 +323,9 @@ public class ModeKasir extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Pilih makanan atau minuman pada tabel", "Warning", JOptionPane.WARNING_MESSAGE);
             jTextField1.setText("");
             jTextField2.setText("");
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();            
             return;
         }
         
@@ -357,6 +333,9 @@ public class ModeKasir extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Pilih 1 makanan atau 1 minuman pada tabel", "Warning", JOptionPane.WARNING_MESSAGE);
             jTextField1.setText("");
             jTextField2.setText("");
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();            
             return;
         }
         
@@ -375,6 +354,9 @@ public class ModeKasir extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Makanan berhasil dikurangi");
                 }
             }
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();
         }
         
         if(jTable2.getSelectedRowCount()== 1){
@@ -392,10 +374,10 @@ public class ModeKasir extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Minuman berhasil dikurangi");
                 }
             }
+            this.dispose();
+            ModeKasir ehh=new ModeKasir();
+            ehh.show();            
         }
-        jTextField1.setText("");
-        jTextField2.setText("");
-        System.out.println(showKasirList());
     }//GEN-LAST:event_jButton4ActionPerformed
     private String showKasirList(){
         String kalimat = "";
