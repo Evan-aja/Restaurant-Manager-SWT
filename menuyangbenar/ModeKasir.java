@@ -399,7 +399,7 @@ public class ModeKasir extends javax.swing.JFrame {
         }
         
         for (int i = 0; i < data.jumlahEmik.size(); i++) {
-            kalimat += jTable2.getValueAt(data.pesananEmik.get(i), 0)+"-"+jTable2.getValueAt(data.pesananMaem.get(i), 1)+"-"+data.jumlahEmik.get(i)+"\n";
+            kalimat += jTable2.getValueAt(data.pesananEmik.get(i), 0)+"-"+jTable2.getValueAt(data.pesananEmik.get(i), 1)+"-"+data.jumlahEmik.get(i)+"\n";
         }
         
         return kalimat;
