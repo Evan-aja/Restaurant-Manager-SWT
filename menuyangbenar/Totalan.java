@@ -126,13 +126,18 @@ public class Totalan extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        data.pesananMaem=new ArrayList<>();
+        JFrame selesai = new JFrame();
+        if (JOptionPane.showConfirmDialog( selesai,"Apakah Anda Yakin?","Selesai",
+            JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+            data.pesananMaem=new ArrayList<>();
         data.jumlahMaem=new ArrayList<>();
         data.pesananEmik=new ArrayList<>();
         data.jumlahEmik=new ArrayList<>();
          ModeKasir mode = new ModeKasir();
         mode.setVisible(true);
         this.dispose();
+        }
+        else return;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
