@@ -271,11 +271,11 @@ public class ModeKasir extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Masukkan jumlah", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            int jumlah = 0 ;
+            int jumlah = 0;
             try {
-                jumlah = Integer.parseInt(jTextField1.getText());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Masukkan angka pada kolom jumlah", "Warning", JOptionPane.WARNING_MESSAGE);
+                jumlah = Integer.parseInt(jTextField2.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Masukkan angka pada kolom jumlah22", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             for (int i = 0; i < data.pesananEmik.size(); i++) {
@@ -382,7 +382,7 @@ public class ModeKasir extends javax.swing.JFrame {
             int selected = jTable2.getSelectedRow();
             int jumlah = 0 ;
             try {
-                jumlah = Integer.parseInt(jTextField1.getText());
+                jumlah = Integer.parseInt(jTextField2.getText());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Masukkan angka pada kolom jumlah", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
